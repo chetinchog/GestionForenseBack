@@ -12,7 +12,7 @@ const NewEvidence = functions.https.onRequest(async (req, res) => {
         .filter(key => key !== "_id")
         .reduce((state, key) => (reqEvidence[key] ? state : false), true)
     ) {
-      HTTPLib.response(res, "Missing required fields!", 400);
+      HTTPLib.response(req, res, "Missing required fields!", 400);
       return;
     }
 
@@ -22,9 +22,9 @@ const NewEvidence = functions.https.onRequest(async (req, res) => {
     );
     const newEvidence = Mongo.inserted(response);
 
-    HTTPLib.response(res, newEvidence);
+    HTTPLib.response(req, res, newEvidence);
   } catch (e) {
-    HTTPLib.response(res, e, 500);
+    HTTPLib.response(req, res, e, 500);
   }
 });
 

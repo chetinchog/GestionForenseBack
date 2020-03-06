@@ -19,9 +19,9 @@ const ApproveEvidence = functions.https.onRequest(async (req, res) => {
       }
     );
 
-    HTTPLib.response(res, "Evidence.state: " + newState);
+    HTTPLib.response(req, res, "Evidence.state: " + newState);
   } catch (e) {
-    HTTPLib.response(res, e, 500);
+    HTTPLib.response(req, res, e, 500);
   }
 });
 

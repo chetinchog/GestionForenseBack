@@ -7,12 +7,14 @@ const Evidence = require("../../models/Evidence");
 const ListEvidence = functions.https.onRequest(async (req, res) => {
   try {
     await Mongo.connect();
-    const response = await Mongo.collection(Evidence.self).find();
+    const response = await Mongo.collection(Evidence.self)
+      .find()
+      .sort({ updatedAt: -1 });
     const listEvidence = await Mongo.list(response);
 
-    HTTPLib.response(res, listEvidence);
+    HTTPLib.response(req, res, listEvidence);
   } catch (e) {
-    HTTPLib.response(res, e, 500);
+    HTTPLib.response(req, res, e, 500);
   }
 });
 

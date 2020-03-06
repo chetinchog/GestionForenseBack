@@ -15,7 +15,7 @@ const Login = functions.https.onRequest(async (req, res) => {
       password
     });
     if (!user) {
-      HTTPLib.response(res, "User not found!", 400);
+      HTTPLib.response(req, res, "User not found!", 400);
       return;
     }
 
@@ -23,14 +23,14 @@ const Login = functions.https.onRequest(async (req, res) => {
       _id: Mongo.ObjectId(user.role)
     });
     if (!role) {
-      HTTPLib.response(res, "Role not found!", 400);
+      HTTPLib.response(req, res, "Role not found!", 400);
       return;
     }
     user.role = role.name;
 
-    HTTPLib.response(res, user);
+    HTTPLib.response(req, res, user);
   } catch (e) {
-    HTTPLib.response(res, e, 500);
+    HTTPLib.response(req, res, e, 500);
   }
 });
 

@@ -12,9 +12,9 @@ const ListEvidence = functions.https.onRequest(async (req, res) => {
       _id: Mongo.ObjectId(_id)
     });
 
-    HTTPLib.response(res, evidence);
+    HTTPLib.response(req, res, evidence);
   } catch (e) {
-    HTTPLib.response(res, e, 500);
+    HTTPLib.response(req, res, e, 500);
   }
 });
 
