@@ -1,6 +1,9 @@
+const cors = require("cors")({ origin: true });
+
 const response = (res, message, code = undefined) => {
+  cors(request, response, () => {});
   res.set("Allow", "*");
-  res.set("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.set("Access-Control-Allow-Origin", "*");
   res.set(
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, PUT, DELETE, OPTIONS"
