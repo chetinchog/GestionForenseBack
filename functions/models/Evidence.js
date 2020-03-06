@@ -1,7 +1,9 @@
+const { EvidenceStates } = require("./StatesEnum");
+
 class Evidence {
   constructor(evidence) {
     this._id = evidence._id;
-    this.state = "PENDIENTE DE REVISIÓN";
+    this.state = EvidenceStates.PENDING;
     this.number = evidence.number;
     this.description = evidence.description;
     this.image = evidence.image;

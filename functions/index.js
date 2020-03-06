@@ -7,3 +7,6 @@ exports.check = functions.https.onRequest((request, response) => {
 exports.newevidence = require("./src/Evidences/NewEvidence");
 exports.listevidence = require("./src/Evidences/ListEvidence");
 exports.viewevidence = require("./src/Evidences/ViewEvidence");
+exports.approveevidence = require("./src/Evidences/ApproveEvidence");
+
+exports.login = require("./src/Security/Login");
